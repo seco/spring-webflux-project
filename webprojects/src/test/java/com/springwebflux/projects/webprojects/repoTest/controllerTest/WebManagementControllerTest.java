@@ -88,4 +88,10 @@ public class WebManagementControllerTest {
                 .exchange().expectStatus().isOk().expectBody().isEmpty();
     }
 
+
+    @Test
+    public void delete_one_element_by_id_v2() {
+        webTestClient.delete().uri("/webmanagement/delete/by/7") // or we can use something like this uriBuilder -> uriBuilder.path("/webmanagement/delete/by/{id}").build(5)
+                .exchange().expectStatus().isOk().expectBody(Void.class);
+    }
 }
