@@ -5,6 +5,7 @@ import com.springwebflux.projects.webprojects.service.WebManagementService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -34,7 +35,7 @@ public class WebManagementController {
         return this.webManagementService.create(webManagement);
     }
 
-    @DeleteMapping("/delete/webmanagement/by/{id}")
+    @DeleteMapping(value = "delete/by/{id}",produces = "application/json")
     public Mono<Void> deleteWebManagement(@PathVariable String id) {
         return this.webManagementService.deleteById(id);
     }
