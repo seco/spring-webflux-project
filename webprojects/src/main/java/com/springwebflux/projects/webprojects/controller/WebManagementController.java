@@ -4,6 +4,7 @@ import com.springwebflux.projects.webprojects.entities.WebManagement;
 import com.springwebflux.projects.webprojects.service.WebManagementService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -28,7 +29,7 @@ public class WebManagementController {
         return this.webManagementService.webManagements(id);
     }
 
-    @PostMapping("/create/webmanagement")
+    @PostMapping("/create")
     public Mono<WebManagement> createWebManagement(@RequestBody WebManagement webManagement) {
         return this.webManagementService.create(webManagement);
     }

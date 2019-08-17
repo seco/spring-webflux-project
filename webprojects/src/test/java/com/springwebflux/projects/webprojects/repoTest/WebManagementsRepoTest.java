@@ -1,4 +1,4 @@
-package com.springwebflux.projects.webprojects;
+package com.springwebflux.projects.webprojects.repoTest;
 
 import com.springwebflux.projects.webprojects.entities.WebManagement;
 import com.springwebflux.projects.webprojects.repo.WebManagementRepository;
@@ -37,7 +37,6 @@ public class WebManagementsRepoTest {
 
     @Test
     public void findAllAndCheckCount() {
-        WebManagement webManagement = new WebManagement(null, "Jane");
         Flux<WebManagement> save = this.webManagementRepository.deleteAll().thenMany(this.webManagementRepository.saveAll(
                 Flux.just(new WebManagement(null, "jane"),
                         new WebManagement(null, "Mike"),
