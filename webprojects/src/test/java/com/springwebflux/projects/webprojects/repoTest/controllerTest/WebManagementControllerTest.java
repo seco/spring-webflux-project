@@ -1,5 +1,6 @@
 package com.springwebflux.projects.webprojects.repoTest.controllerTest;
 
+import com.springwebflux.projects.webprojects.configuration.WebManagementConfiguration;
 import com.springwebflux.projects.webprojects.controller.WebManagementController;
 import com.springwebflux.projects.webprojects.entities.WebManagement;
 import com.springwebflux.projects.webprojects.service.WebManagementService;
@@ -12,13 +13,16 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.BodyInserters;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -30,6 +34,7 @@ import static org.mockito.ArgumentMatchers.any;
  */
 @RunWith(SpringRunner.class)
 @WebFluxTest(controllers = WebManagementController.class)
+@Import(WebManagementConfiguration.class) // importing routerfunction
 @Slf4j
 public class WebManagementControllerTest {
 
@@ -93,5 +98,24 @@ public class WebManagementControllerTest {
     public void delete_one_element_by_id_and_expectBody_Void() {
         webTestClient.delete().uri("/webmanagement/delete/by/7") // or we can use something like this uriBuilder -> uriBuilder.path("/webmanagement/delete/by/{id}").build(5)
                 .exchange().expectStatus().isOk().expectBody(Void.class);
+    }
+
+    @Test
+    public void test_via_router_function() {
+
+        // first we need to delete and  add something after that check it out
+        // we already define mockito for adding , it will return 3 elements
+
+        List<WebManagement> list = webTestClient.get().uri("/routerFunction/test")
+                .header("Content-Type", "application/json")
+                .exchange().expectBodyList(WebManagement.class)
+                .returnResult().getResponseBody();
+
+
+        List<String> names = Arrays.asList("Sara","Jackson","Joe");
+        StepVerifier.create(Flux.fromStream(list.parallelStream()))
+                .expectNextCount(3)
+                .verifyComplete();
+
     }
 }

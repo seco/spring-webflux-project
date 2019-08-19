@@ -22,6 +22,6 @@ public class WebManagementConfiguration {
 
     @Bean
     public RouterFunction<ServerResponse> routerFunction() {
-        return route(GET("/alternative/requestMapping"),serverRequest -> ok().body(webManagementService.webManagements(), WebManagement.class));
+        return route(GET("/routerFunction/test"),serverRequest -> ok().body(webManagementService.webManagements(), WebManagement.class));
     }
 }

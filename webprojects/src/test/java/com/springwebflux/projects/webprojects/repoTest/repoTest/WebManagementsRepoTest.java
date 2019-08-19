@@ -65,7 +65,7 @@ public class WebManagementsRepoTest {
                 .create(saved)
                 .expectNextCount(0)
                 .verifyComplete();
-        log.info("saving takes : " + duration);
+        log.info("save and deletion takes : " + duration);
     }
 
     @Test
