@@ -35,6 +35,12 @@ public class WebManagementController {
         return this.webManagementService.create(webManagement);
     }
 
+    // TODO : write test for this method
+    @PostMapping("/create/v2")
+    public Mono<WebManagement> createWebManagement(@RequestBody Mono<WebManagement> webManagement) {
+        return this.webManagementService.create(webManagement);
+    }
+
     @DeleteMapping(value = "delete/by/{id}",produces = "application/json")
     public Mono<Void> deleteWebManagement(@PathVariable String id) {
         return this.webManagementService.deleteById(id);

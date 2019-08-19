@@ -11,5 +11,7 @@ public interface WebManagementService {
 
     Mono<WebManagement> create(WebManagement webManagement);
 
+    Mono<WebManagement> create(Mono<WebManagement> webManagement);
+
     Mono<Void> deleteById(String id);
 }

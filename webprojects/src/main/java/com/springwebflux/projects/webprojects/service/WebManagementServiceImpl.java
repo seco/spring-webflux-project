@@ -31,6 +31,11 @@ public class WebManagementServiceImpl implements WebManagementService {
     }
 
     @Override
+    public Mono<WebManagement> create(Mono<WebManagement> webManagement) {
+        return webManagement.flatMap( e-> webManagementRepository.save(e));
+    }
+
+    @Override
     public Mono<Void> deleteById(String id) {
         return this.webManagementRepository.deleteById(id);
     }

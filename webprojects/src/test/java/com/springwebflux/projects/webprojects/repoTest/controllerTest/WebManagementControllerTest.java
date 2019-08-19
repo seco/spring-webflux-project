@@ -39,6 +39,7 @@ import static org.mockito.ArgumentMatchers.any;
 public class WebManagementControllerTest {
 
     private static WebManagement webManagement = new WebManagement(null, "John");
+
     @MockBean
     WebManagementService webManagementService;
     @Autowired
