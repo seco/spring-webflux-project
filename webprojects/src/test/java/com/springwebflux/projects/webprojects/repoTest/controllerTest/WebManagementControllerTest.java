@@ -68,7 +68,7 @@ public class WebManagementControllerTest {
                 .body(BodyInserters.fromObject(webManagement))
                 .exchange().expectBody(WebManagement.class).returnResult().getResponseBody();
         log.info(webManagements.getId() + webManagements.getName());
-        Assert.assertEquals(webManagements.getName(), "John");
+        Assert.assertEquals(webManagements.getName(), "Jackson");
     }
 
     @Test
@@ -90,7 +90,7 @@ public class WebManagementControllerTest {
 
 
     @Test
-    public void delete_one_element_by_id_v2() {
+    public void delete_one_element_by_id_and_expectBody_Void() {
         webTestClient.delete().uri("/webmanagement/delete/by/7") // or we can use something like this uriBuilder -> uriBuilder.path("/webmanagement/delete/by/{id}").build(5)
                 .exchange().expectStatus().isOk().expectBody(Void.class);
     }
