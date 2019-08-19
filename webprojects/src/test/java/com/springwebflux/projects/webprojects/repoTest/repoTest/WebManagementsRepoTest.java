@@ -1,4 +1,4 @@
-package com.springwebflux.projects.webprojects.repoTest;
+package com.springwebflux.projects.webprojects.repoTest.repoTest;
 
 import com.springwebflux.projects.webprojects.entities.WebManagement;
 import com.springwebflux.projects.webprojects.repo.WebManagementRepository;
