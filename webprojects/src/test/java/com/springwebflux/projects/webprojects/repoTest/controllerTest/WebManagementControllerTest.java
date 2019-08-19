@@ -1,6 +1,5 @@
 package com.springwebflux.projects.webprojects.repoTest.controllerTest;
 
-import com.springwebflux.projects.webprojects.configuration.WebManagementConfiguration;
 import com.springwebflux.projects.webprojects.controller.WebManagementController;
 import com.springwebflux.projects.webprojects.entities.WebManagement;
 import com.springwebflux.projects.webprojects.service.WebManagementService;
@@ -34,7 +33,7 @@ import static org.mockito.ArgumentMatchers.any;
  */
 @RunWith(SpringRunner.class)
 @WebFluxTest(controllers = WebManagementController.class)
-@Import(WebManagementConfiguration.class) // importing routerfunction
+//@Import(WebManagementConfiguration.class) // importing routerfunction
 @Slf4j
 public class WebManagementControllerTest {
 
@@ -101,22 +100,22 @@ public class WebManagementControllerTest {
                 .exchange().expectStatus().isOk().expectBody(Void.class);
     }
 
-    @Test
-    public void test_via_router_function() {
-
-        // first we need to delete and  add something after that check it out
-        // we already define mockito for adding , it will return 3 elements
-
-        List<WebManagement> list = webTestClient.get().uri("/routerFunction/test")
-                .header("Content-Type", "application/json")
-                .exchange().expectBodyList(WebManagement.class)
-                .returnResult().getResponseBody();
-
-
-        List<String> names = Arrays.asList("Sara","Jackson","Joe");
-        StepVerifier.create(Flux.fromStream(list.parallelStream()))
-                .expectNextCount(3)
-                .verifyComplete();
-
-    }
+//    @Test
+//    public void test_via_router_function() {
+//
+//        // first we need to delete and  add something after that check it out
+//        // we already define mockito for adding , it will return 3 elements
+//
+//        List<WebManagement> list = webTestClient.get().uri("/routerFunction/test")
+//                .header("Content-Type", "application/json")
+//                .exchange().expectBodyList(WebManagement.class)
+//                .returnResult().getResponseBody();
+//
+//
+//        List<String> names = Arrays.asList("Sara","Jackson","Joe");
+//        StepVerifier.create(Flux.fromStream(list.parallelStream()))
+//                .expectNextCount(3)
+//                .verifyComplete();
+//
+//    }
 }

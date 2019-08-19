@@ -36,8 +36,8 @@ public class WebManagementController {
     }
 
     // TODO : write test for this method
-    @PostMapping("/create/v2")
-    public Mono<WebManagement> createWebManagement(@RequestBody Mono<WebManagement> webManagement) {
+    @PostMapping("/lets/v2")
+    public Mono<WebManagement> createWebManagementV2(@RequestBody Mono<WebManagement> webManagement) {
         return this.webManagementService.create(webManagement);
     }
 
