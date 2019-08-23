@@ -21,6 +21,7 @@
 
     <modules>
         <module>webprojects</module>
+        <module>spring-utils</module>
     </modules>
 
     <build>
