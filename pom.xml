@@ -8,10 +8,10 @@
         <version>2.1.7.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.springwebflux.projects</groupId>
-    <artifactId>spring-webflux-project</artifactId>
+    <groupId>com.springreact.projects</groupId>
+    <artifactId>spring-react-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-webflux-project</name>
+    <name>spring-react-project</name>
     <description>Spring WebFlux project for Spring Boot</description>
     <packaging>pom</packaging>
     <properties>
